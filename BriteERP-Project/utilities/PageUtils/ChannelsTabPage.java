@@ -1,4 +1,4 @@
-package utilities.PageUtils;
+package PageUtils;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import utilities.GeneralUtils.Constants;
-import utilities.GeneralUtils.Driver;
-import utilities.GeneralUtils.FailMessages;
+import GeneralUtils.Constants;
+import GeneralUtils.Driver;
+import GeneralUtils.FailMessages;
 
 public class ChannelsTabPage {
 	private static WebDriver driver;

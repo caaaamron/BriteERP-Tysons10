@@ -1,4 +1,4 @@
-package utilities.GeneralUtils;
+package GeneralUtils;
 
 public class FailMessages {
 	
@@ -17,6 +17,7 @@ public class FailMessages {
 	
 	public static String fail(Exception e) {
 		String failMessage = getMethod(e) + ": FAILED --> " + getException(e);
+		System.out.println(failMessage);
 		return failMessage;
 	}
 }

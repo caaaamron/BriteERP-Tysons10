@@ -1,4 +1,4 @@
-package tests.functional;
+package functional;
 
 public class  functional1{
 	

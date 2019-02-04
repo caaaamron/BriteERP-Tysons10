@@ -1,12 +1,12 @@
-package utilities.PageUtils;
+package PageUtils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import utilities.GeneralUtils.Driver;
-import utilities.GeneralUtils.FailMessages;
+import GeneralUtils.Driver;
+import GeneralUtils.FailMessages;
 
 
 
@@ -25,7 +25,7 @@ public class Homepage{
 		try {
 			signInButton.click();
 		} catch (Exception e) {
-			System.out.println(FailMessages.fail(e));
+			FailMessages.fail(e);
 		}
 	}
 }

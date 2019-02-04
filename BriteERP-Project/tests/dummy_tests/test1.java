@@ -1,13 +1,13 @@
-package tests.dummy_tests;
+package dummy_tests;
 
 import org.testng.annotations.Test;
 
-import utilities.GeneralUtils.PropertyConfig;
-import utilities.GeneralUtils.TestBase;
-import utilities.PageUtils.DiscussPage;
-import utilities.PageUtils.Homepage;
-import utilities.PageUtils.OodooPage;
-import utilities.PageUtils.SignInPage;
+import GeneralUtils.PropertyConfig;
+import GeneralUtils.TestBase;
+import PageUtils.DiscussPage;
+import PageUtils.Homepage;
+import PageUtils.OodooPage;
+import PageUtils.SignInPage;
 
 public class test1 extends TestBase {
 	

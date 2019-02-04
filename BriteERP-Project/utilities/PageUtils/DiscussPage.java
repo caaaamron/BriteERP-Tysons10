@@ -1,4 +1,4 @@
-package utilities.PageUtils;
+package PageUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import utilities.GeneralUtils.Driver;
-import utilities.GeneralUtils.FailMessages;
+import GeneralUtils.Driver;
+import GeneralUtils.FailMessages;
 
 public class DiscussPage {
 	private static WebDriver driver;
@@ -65,7 +65,7 @@ public class DiscussPage {
 			starredTab.click();
 			Thread.sleep(1000);
 		} catch (Exception e) {
-			System.out.println("Unable to click Starred Tab");
+			FailMessages.fail(e);
 		}
 	}
 
@@ -73,7 +73,7 @@ public class DiscussPage {
 		try {
 			inboxTab.click();
 		} catch (Exception e) {
-			System.out.println("Unable to click Starred Tab");
+			FailMessages.fail(e);
 		}
 
 	}
@@ -92,7 +92,7 @@ public class DiscussPage {
 			channelsTab.click();
 			Thread.sleep(2000);
 		} catch (Exception e) {
-			System.out.println("Unable to click channels tab");
+			FailMessages.fail(e);
 		}
 	}
 
@@ -104,13 +104,11 @@ public class DiscussPage {
 			WebElement activeChannel = driver
 					.findElement(By.xpath("//div[@class = 'o_mail_chat_channel_item o_active']"));
 			name = activeChannel.getAttribute("title").trim();
-			System.out.println("Active channel name" + name);
 			if (name.equalsIgnoreCase(channel)) {
 				contains = true;
 				return true;
 			}
 		} catch (Exception e) {
-			System.out.println("test");
 		
 		}
 		if (contains == false) {
@@ -143,7 +141,7 @@ public class DiscussPage {
 
 				Driver.wait(2);
 			} catch (Exception e) {
-				System.out.println(FailMessages.fail(e));
+				FailMessages.fail(e);
 			}
 		}
 	}

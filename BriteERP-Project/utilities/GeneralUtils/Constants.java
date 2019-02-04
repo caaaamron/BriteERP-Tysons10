@@ -1,4 +1,4 @@
-package utilities.GeneralUtils;
+package GeneralUtils;
 
 public class Constants {
 	

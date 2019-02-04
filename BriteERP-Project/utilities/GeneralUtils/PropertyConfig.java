@@ -1,4 +1,4 @@
-package utilities.GeneralUtils;
+package GeneralUtils;
 
 import java.io.FileInputStream;
 import java.util.*;
