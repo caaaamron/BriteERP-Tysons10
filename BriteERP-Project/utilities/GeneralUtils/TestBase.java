@@ -1,14 +1,15 @@
-package GeneralUtils;
+package utilities.GeneralUtils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.testng.Reporter;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
-import PageUtils.DiscussPage;
-import PageUtils.OodooPage;
-import PageUtils.SignInPage;
+import utilities.PageUtils.OodooPage;
+import utilities.PageUtils.SignInPage;
 
 public class TestBase{
 	protected static WebDriver driver;
@@ -16,10 +17,11 @@ public class TestBase{
 
 	@BeforeClass
 	public void beforeClass() {
+		
 		log.info("Test Base === Driver Set Up");
 		driver = Driver.setUp();
 		
-		log.info("Test Base === Getting Property");
+		log.info("Test Base === Getting BaseURL");
 		driver.get(PropertyConfig.getProperty("baseUrl"));
 		
 		log.info("Test Base === Clicking BriteERPDemo");
@@ -27,14 +29,14 @@ public class TestBase{
 		
 		log.info("Test Base === Clicking login");
 		SignInPage.login();
-		
-
 	}
-
+	
 	@AfterClass
 	public void afterClass() throws InterruptedException {
 		log.info("Test Base === Closing driver");
 		Thread.sleep(5000);
-		Driver.close();
+//		Driver.close();
 	}
+	
+	
 }

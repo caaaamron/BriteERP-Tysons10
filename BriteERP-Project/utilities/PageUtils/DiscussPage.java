@@ -1,16 +1,21 @@
-package PageUtils;
+package utilities.PageUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import GeneralUtils.Constants;
-import GeneralUtils.Driver;
-import GeneralUtils.FailMessages;
+import utilities.GeneralUtils.Driver;
+import utilities.GeneralUtils.FailMessages;
 
 public class DiscussPage {
 	private static WebDriver driver;
+	private static List<String> allChannelsName;
 
 	static {
 		driver = Driver.setUp();
@@ -41,6 +46,15 @@ public class DiscussPage {
 	@FindBy(className = "ui-menu-item")
 	private static WebElement channelHiddenCreate;
 
+//	@FindBy(xpath = "//div[@class = 'o_mail_chat_channel_item o_active']")
+//	private static WebElement activeChannel;
+
+	@FindAll({ @FindBy(className = "o_mail_chat_channel_item ") })
+	private static List<WebElement> readChannels;
+
+	@FindAll({ @FindBy(xpath = "//div[@class = 'o_mail_chat_channel_item  o_unread_message ']") })
+	private static List<WebElement> unreadChannels;
+
 	public static void search(String text) {
 		searchBox.sendKeys(text);
 		searchBox.submit();
@@ -68,12 +82,13 @@ public class DiscussPage {
 		try {
 			starredTab.click();
 		} catch (Exception e) {
-			System.out.println("Unable to click Starred Tab");
+			FailMessages.fail(e);
 		}
 	}
 
 	public static void clickChannelsTab() {
 		try {
+			System.out.println("Clicking channels tab");
 			channelsTab.click();
 			Thread.sleep(2000);
 		} catch (Exception e) {
@@ -81,20 +96,56 @@ public class DiscussPage {
 		}
 	}
 
-	public static void createChannel(String environment, String name) {
+	public static boolean containsChannel(String channel) {
+		boolean contains = false;
+		String name = "";
 
-		switch (environment) {
+		try {
+			WebElement activeChannel = driver
+					.findElement(By.xpath("//div[@class = 'o_mail_chat_channel_item o_active']"));
+			name = activeChannel.getAttribute("title").trim();
+			System.out.println("Active channel name" + name);
+			if (name.equalsIgnoreCase(channel)) {
+				contains = true;
+				return true;
+			}
+		} catch (Exception e) {
+			System.out.println("test");
+		
+		}
+		if (contains == false) {
+			for (WebElement each : readChannels) {
+				name = each.getAttribute("title").trim();
+				if (name.equalsIgnoreCase(channel)) {
+					return true;
+				}
+			}
+		}
 
-		case "discuss":
+		if (contains == false) {
+			for (WebElement each2 : unreadChannels) {
+				name = each2.getAttribute("title").trim();
+				if (name.equalsIgnoreCase(channel)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public static void addChannel(String name) {
+		if (!(containsChannel(name))) {
 			try {
+				System.out.println("Adding channel");
 				channelAdd.click();
 				channelAddName.sendKeys(name);
 				channelHiddenCreate.click();
+
+				Driver.wait(2);
 			} catch (Exception e) {
 				System.out.println(FailMessages.fail(e));
 			}
-			break;
-
 		}
 	}
+
 }

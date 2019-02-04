@@ -1,4 +1,4 @@
-package GeneralUtils;
+package utilities.GeneralUtils;
 
 import java.io.FileInputStream;
 import java.util.*;
@@ -7,7 +7,7 @@ public class PropertyConfig {
 	protected static Properties properties;
 	
 	static {
-		String path = "C:\\Users\\Alienware Laptop\\git\\BriteERP-Tysons10\\BriteERP-Project\\utilities\\Properties\\config.properties";
+		String path = "C:\\Users\\Alienware Laptop\\git\\BriteERP-Tysons10\\BriteERP-Project\\utilities\\utilities\\Properties\\config.properties";
 	
 		try {
 			FileInputStream fileInputStream = new FileInputStream(path);

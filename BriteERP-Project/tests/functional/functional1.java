@@ -1,6 +1,6 @@
-package functional;
+package tests.functional;
 
-public class functional1 {
+public class  functional1{
 	
 	
 }

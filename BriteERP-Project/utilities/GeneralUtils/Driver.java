@@ -1,11 +1,15 @@
-package GeneralUtils;
+package utilities.GeneralUtils;
 
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -47,7 +51,22 @@ public class Driver {
 		return driver;
 	}
 	
+	public static void wait(int time) {
+		try {
+			Thread.sleep(time);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void close() {
+		if(driver != null) {
+			driver.close();
+			driver = null;
+		}
+	}
+	
+	public static void quit() {
 		if(driver != null) {
 			driver.quit();
 			driver = null;

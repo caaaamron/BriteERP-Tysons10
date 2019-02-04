@@ -1,4 +1,4 @@
-package GeneralUtils;
+package utilities.GeneralUtils;
 
 import java.util.List;
 

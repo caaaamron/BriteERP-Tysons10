@@ -1,13 +1,13 @@
-package PageUtils;
+package utilities.PageUtils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import GeneralUtils.Constants;
-import GeneralUtils.Driver;
-import GeneralUtils.FailMessages;
+import utilities.GeneralUtils.Constants;
+import utilities.GeneralUtils.Driver;
+import utilities.GeneralUtils.FailMessages;
 
 public class OodooPage {
 	private static WebDriver driver;
@@ -29,7 +29,6 @@ public class OodooPage {
 
 		try {
 			briteErpDemo.click();
-			throw new IllegalArgumentException();
 		} catch (Exception e) {
 			System.out.println(FailMessages.fail(e));
 
